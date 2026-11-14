@@ -1,0 +1,31 @@
+:root {
+  color-scheme: dark;
+
+  /* cor */
+  --ink: #060606; /* fundo — preto sala */
+  --ink-2: #0f0e0d; /* painéis / elevação sutil */
+  --ink-3: #141414; /* grafite */
+  --bone: #ece7df; /* texto principal — osso quente */
+  --grey: #857f78; /* texto secundário / labels */
+  --grey-2: #55504a; /* texto terciário */
+  --steel: #9bb0be; /* acento frio, uso mínimo */
+  --line: rgba(236, 231, 223, 0.12);
+  --line-2: rgba(236, 231, 223, 0.22);
+
+  /* tipografia */
+  --font-display: "Instrument Sans", "Neue Montreal", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-text: "Instrument Sans", "Neue Montreal", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* escala fluida */
+  --fs-hero: clamp(2.6rem, 8vw, 7.5rem);
+  --fs-h2: clamp(2rem, 6vw, 5.5rem);
+  --fs-body: clamp(1rem, 1.1vw, 1.2rem);
+  --fs-label: 0.6875rem;
+
+  --space-section: clamp(6rem, 14vw, 14rem);
+  --gutter: clamp(1.25rem, 4vw, 4rem);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* expo.out */
+  --maxw: 1280px;
+}

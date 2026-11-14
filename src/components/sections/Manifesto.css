@@ -1,0 +1,29 @@
+.manifesto {
+  padding: var(--space-section) 0;
+}
+
+.manifesto__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+.manifesto__title {
+  font-size: var(--fs-h2);
+  max-width: 12ch;
+}
+
+/* legenda deslocada — assimetria deliberada */
+.manifesto__aside {
+  justify-self: end;
+  max-width: 30ch;
+  color: var(--grey);
+  line-height: 1.8;
+}
+
+@media (max-width: 720px) {
+  .manifesto__aside {
+    justify-self: start;
+    padding-left: 18vw;
+  }
+}
