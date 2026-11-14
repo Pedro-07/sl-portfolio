@@ -42,7 +42,8 @@ export function Process() {
   );
 
   return (
-    <section className="process" ref={scope} aria-label="Como trabalhamos">
+    <section className="process" ref={scope}>
+      <h2 className="sr-only">Como trabalhamos</h2>
       <div className="wrap">
         <div className="process__head">
           <span className="label">Como trabalhamos</span>

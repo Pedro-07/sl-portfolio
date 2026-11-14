@@ -39,7 +39,7 @@
 }
 
 .work__chapter .label {
-  color: var(--grey-2);
+  color: var(--grey);
 }
 
 .work__item {
@@ -86,7 +86,7 @@
   font-size: var(--fs-label);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--grey-2);
+  color: var(--grey);
 }
 
 /* ---------- mobile: lista vertical por capítulo ---------- */

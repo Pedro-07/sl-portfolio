@@ -52,7 +52,7 @@ a.contact__link:hover::after {
 
 /* pendência [PREENCHER]: sem link, sem hover */
 .contact__link--pending {
-  color: var(--grey-2);
+  color: var(--grey);
 }
 
 .contact__footer {
@@ -62,7 +62,7 @@ a.contact__link:hover::after {
   gap: 1rem;
   border-top: 1px solid var(--line);
   padding-top: 1.5rem;
-  color: var(--grey-2);
+  color: var(--grey);
 }
 
 @media (prefers-reduced-motion: reduce) {

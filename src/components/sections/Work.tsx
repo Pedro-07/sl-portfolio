@@ -95,7 +95,8 @@ export function Work() {
   );
 
   return (
-    <section className="work" ref={scope} aria-label="Portfólio">
+    <section className="work" ref={scope}>
+      <h2 className="sr-only">O trabalho</h2>
       <div className="work__head wrap">
         <span className="label">O trabalho</span>
         <span className="label">Retrato · Editorial · Ensaios</span>

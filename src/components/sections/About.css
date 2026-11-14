@@ -52,7 +52,7 @@
 }
 
 .about__sign {
-  color: var(--grey-2);
+  color: var(--grey);
 }
 
 @media (max-width: 720px) {
