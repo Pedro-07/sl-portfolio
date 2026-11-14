@@ -2,6 +2,7 @@ import "./About.css";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap, SplitText } from "../../lib/gsap";
+import { aboutPortrait } from "../../data/work";
 
 export function About() {
   const scope = useRef<HTMLElement>(null);
@@ -73,12 +74,23 @@ export function About() {
     <section className="about" ref={scope} aria-label="Sobre Sarah e Levi">
       <div className="about__inner wrap">
         <figure className="about__figure">
-          {/* Retrato da dupla — [PREENCHER]. Placeholder tonal até lá. */}
-          <span
-            className="about__media"
-            style={{ background: "linear-gradient(150deg,#242019,#0b0a08 70%)" }}
-            aria-hidden="true"
-          />
+          {/* Retrato da dupla — [PREENCHER] com a foto real (ver data/work.ts). */}
+          {aboutPortrait.src ? (
+            <img
+              className="about__media"
+              src={aboutPortrait.src}
+              alt={aboutPortrait.alt ?? ""}
+              loading="lazy"
+              decoding="async"
+              style={{ background: aboutPortrait.tone }}
+            />
+          ) : (
+            <span
+              className="about__media"
+              style={{ background: aboutPortrait.tone }}
+              aria-hidden="true"
+            />
+          )}
         </figure>
 
         <div className="about__copy">

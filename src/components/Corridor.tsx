@@ -37,7 +37,7 @@ export function Corridor({ frames, speed = 15 }: CorridorProps) {
                     style={{
                       animationDuration: `${speed}s`,
                       animationDelay: `${delay}s`,
-                      background: frame.src ? undefined : frame.tone,
+                      background: frame.tone, // visível enquanto a imagem carrega
                     }}
                   >
                     {frame.src ? (

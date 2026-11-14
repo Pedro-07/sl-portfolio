@@ -127,6 +127,7 @@ export function Work() {
                         alt={item.alt ?? item.caption}
                         loading="lazy"
                         decoding="async"
+                        style={{ background: item.tone }}
                       />
                     ) : (
                       <span
