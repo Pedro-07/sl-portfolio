@@ -196,8 +196,10 @@ public/
 | Fotos galeria — Editorial | **falta** | " |
 | Fotos galeria — Ensaios | **falta** | " |
 | Retrato da dupla (Sobre) | **falta** | 1 imagem |
-| Fonte Neue Montreal (.woff2) | **falta** | baixar Pangram Pangram, servir local |
-| noise.svg (grão) | gerar | ruído SVG, overlay 4–6% |
+| Fonte | **tem (substituta)** | Instrument Sans variável local; trocar por Neue Montreal se baixada |
+| noise.svg (grão) | tem | overlay 5% |
+| favicon.svg | tem | placa SL |
+| og.png 1200×630 | tem | trocar por URL absoluta no deploy |
 | WhatsApp + email | **[PREENCHER]** | entram no contato/rodapé |
 | Legendas de projeto (nome — ano) | **[PREENCHER]** | por foto |
 | Texto do "Sobre" + método | **[REVISAR]** | confirmar tom/origem da dupla |
