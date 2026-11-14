@@ -1,0 +1,72 @@
+.contact {
+  min-height: 88svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(2.5rem, 7vw, 5rem);
+  padding: var(--space-section) 0 clamp(2rem, 5vw, 4rem);
+}
+
+.contact__title {
+  font-size: var(--fs-hero);
+  max-width: 10ch;
+}
+
+.contact__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1.25rem, 4vw, 3rem);
+}
+
+.contact__link {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--grey);
+  position: relative;
+  padding-bottom: 4px;
+}
+
+/* underline cresce da esquerda */
+a.contact__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--bone);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s var(--ease-out);
+}
+
+a.contact__link:hover {
+  color: var(--bone);
+}
+
+a.contact__link:hover::after {
+  transform: scaleX(1);
+}
+
+/* pendência [PREENCHER]: sem link, sem hover */
+.contact__link--pending {
+  color: var(--grey-2);
+}
+
+.contact__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1.5rem;
+  color: var(--grey-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a.contact__link::after {
+    transition: none;
+  }
+}
