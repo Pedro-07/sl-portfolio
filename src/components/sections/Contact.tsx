@@ -28,6 +28,7 @@ export function Contact() {
               ease: "expo.out",
               stagger: 0.08,
               scrollTrigger: { trigger: title, start: "top 80%" },
+              onComplete: () => split.revert(), // máscara cortaria descendentes
             });
           }
           gsap.from(links, {

@@ -52,6 +52,7 @@ export function About() {
               ease: "expo.out",
               stagger: 0.08,
               scrollTrigger: { trigger: lead, start: "top 80%" },
+              onComplete: () => split.revert(), // máscara cortaria descendentes
             });
           }
           gsap.from(rest, {

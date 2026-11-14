@@ -36,6 +36,9 @@ export function Hero({ play }: { play: boolean }) {
                 ease: "expo.out",
                 stagger: 0.09,
                 delay: 0.05,
+                // a máscara corta descendentes (P, g, p) com line-height
+                // apertado — remove ao terminar o reveal
+                onComplete: () => split.revert(),
               },
             );
             gsap.set(title, { opacity: 1 });

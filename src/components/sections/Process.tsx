@@ -31,6 +31,7 @@ export function Process() {
               duration: 1.1,
               ease: "expo.out",
               scrollTrigger: { trigger: line, start: "top 85%" },
+              onComplete: () => split.revert(), // máscara cortaria descendentes
             });
           });
         });
