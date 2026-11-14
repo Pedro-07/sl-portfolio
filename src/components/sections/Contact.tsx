@@ -41,6 +41,50 @@ export function Contact() {
         });
       });
 
+      // CTA magnético — só no link principal (Instagram), só desktop.
+      mm.add(
+        {
+          motion: "(prefers-reduced-motion: no-preference)",
+          desktop: "(min-width: 768px)",
+        },
+        (ctx) => {
+          const { motion, desktop } = ctx.conditions as {
+            motion: boolean;
+            desktop: boolean;
+          };
+          if (!motion || !desktop) return;
+
+          const btn = scope.current?.querySelector<HTMLElement>(
+            "[data-magnetic]",
+          );
+          if (!btn) return;
+
+          const xTo = gsap.quickTo(btn, "x", { duration: 0.4, ease: "power3" });
+          const yTo = gsap.quickTo(btn, "y", { duration: 0.4, ease: "power3" });
+
+          const onMove = (e: PointerEvent) => {
+            const r = btn.getBoundingClientRect();
+            xTo((e.clientX - (r.left + r.width / 2)) * 0.3);
+            yTo((e.clientY - (r.top + r.height / 2)) * 0.3);
+          };
+          const onLeave = () => {
+            gsap.to(btn, {
+              x: 0,
+              y: 0,
+              duration: 0.7,
+              ease: "elastic.out(1, 0.4)",
+            });
+          };
+
+          btn.addEventListener("pointermove", onMove);
+          btn.addEventListener("pointerleave", onLeave);
+          return () => {
+            btn.removeEventListener("pointermove", onMove);
+            btn.removeEventListener("pointerleave", onLeave);
+          };
+        },
+      );
+
       return () => mm.revert();
     },
     { scope },
@@ -56,6 +100,7 @@ export function Contact() {
         <div className="contact__links">
             <a
               className="contact__link"
+              data-magnetic
               href="https://instagram.com/sl.prodstudio"
               target="_blank"
               rel="noreferrer"

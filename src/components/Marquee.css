@@ -1,0 +1,28 @@
+.marquee {
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: clamp(1rem, 2.5vw, 1.75rem) 0;
+  margin: 0 0 var(--space-section);
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.marquee__chunk {
+  font-size: clamp(1.4rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--grey-2); /* decorativo (aria-hidden) */
+  padding-right: 1.2em;
+}
+
+.marquee__chunk em {
+  font-style: normal;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--grey-2);
+}

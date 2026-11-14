@@ -1,0 +1,30 @@
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader__mark {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: var(--bone);
+  color: #111;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 26px;
+  letter-spacing: -0.04em;
+}
+
+.preloader__num {
+  position: absolute;
+  right: var(--gutter);
+  bottom: clamp(1.5rem, 4vw, 3rem);
+  font-variant-numeric: tabular-nums;
+  color: var(--grey);
+}

@@ -2,13 +2,16 @@
   position: absolute;
   inset: 0;
   overflow: hidden;
+  /* tudo no corredor é medido em cqw — % da largura deste container */
+  container-type: inline-size;
+  pointer-events: none;
+  user-select: none;
 }
 
 .corridor__stage {
   position: absolute;
   inset: 0;
-  perspective: 1100px;
-  perspective-origin: 50% 48%;
+  transform-style: preserve-3d;
 }
 
 .corridor__world {
@@ -19,28 +22,12 @@
 
 .corridor__frame {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: clamp(130px, 19vw, 230px);
-  aspect-ratio: 3 / 4;
-  border-radius: 3px;
   overflow: hidden;
-  transform-style: preserve-3d;
   backface-visibility: hidden;
   box-shadow:
     inset 0 0 0 1px rgba(236, 231, 223, 0.07),
-    0 30px 60px rgba(0, 0, 0, 0.6);
-  animation: corridor-rush 15s linear infinite;
-  will-change: transform, opacity;
-}
-
-/* moldura interna sutil — leitura de "foto" mesmo sem imagem */
-.corridor__frame::after {
-  content: "";
-  position: absolute;
-  inset: 8px;
-  border: 1px solid rgba(236, 231, 223, 0.06);
-  pointer-events: none;
+    0 30px 60px rgba(0, 0, 0, 0.55);
+  will-change: transform;
 }
 
 .corridor__frame img {
@@ -49,47 +36,11 @@
   object-fit: cover;
 }
 
-.corridor__rail--l .corridor__frame {
-  --x: -33vw;
-  --ry: 22deg;
-}
-.corridor__rail--r .corridor__frame {
-  --x: 33vw;
-  --ry: -22deg;
-}
-
-@keyframes corridor-rush {
-  0% {
-    transform: translate3d(var(--x), -50%, -1950px) rotateY(var(--ry));
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  86% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate3d(var(--x), -50%, 640px) rotateY(var(--ry));
-    opacity: 0;
-  }
-}
-
-/* Reduced motion: congela mid-flight → composição estática. */
+/* Reduced motion: pausar (não desligar) mantém o corredor inteiro —
+   cada card já foi solto no meio do voo pelo delay negativo, então
+   congela como uma composição pronta em vez de colapsar no eixo. */
 @media (prefers-reduced-motion: reduce) {
   .corridor__frame {
     animation-play-state: paused;
-  }
-}
-
-@media (max-width: 720px) {
-  .corridor__rail--l .corridor__frame {
-    --x: -30vw;
-  }
-  .corridor__rail--r .corridor__frame {
-    --x: 30vw;
-  }
-  .corridor__frame {
-    width: clamp(120px, 34vw, 180px);
   }
 }

@@ -83,7 +83,15 @@
   background: var(--line-2);
 }
 
-/* estados iniciais da entrada (GSAP revela) */
+/* estados iniciais da entrada (GSAP revela). Só esconde quando há motion:
+   em reduced-motion o conteúdo fica visível sem depender de JS. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero__title,
+  [data-hero-in] {
+    opacity: 0;
+  }
+}
+
 .hero__title,
 .hero__sub,
 .hero__kicker {

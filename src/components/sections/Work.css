@@ -12,6 +12,7 @@
 
 /* ---------- desktop: trilho horizontal com pin ---------- */
 .work__viewport {
+  position: relative;
   overflow: hidden;
 }
 
@@ -26,6 +27,7 @@
 
 /* título de capítulo entra como peça do trilho */
 .work__chapter {
+  position: relative;
   flex: none;
   display: flex;
   flex-direction: column;
@@ -34,8 +36,25 @@
 }
 
 .work__chapter h3 {
-  font-size: var(--fs-h2);
+  font-size: clamp(3rem, 9vw, 8rem);
   color: var(--bone);
+  letter-spacing: -0.035em;
+}
+
+/* numeração fantasma gigante atrás do título */
+.work__chapter::before {
+  content: attr(data-num);
+  position: absolute;
+  top: 50%;
+  left: -0.1em;
+  transform: translateY(-62%);
+  font-size: clamp(9rem, 26vw, 22rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(236, 231, 223, 0.1);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .work__chapter .label {
@@ -87,6 +106,30 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--grey);
+}
+
+/* linha de progresso do trilho (só desktop, enquanto pinado) */
+.work__progress {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: clamp(1.25rem, 3vw, 2rem);
+  height: 1px;
+  background: var(--line);
+}
+
+.work__progress-bar {
+  position: absolute;
+  inset: 0;
+  background: var(--bone);
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+@media (max-width: 767px) {
+  .work__progress {
+    display: none;
+  }
 }
 
 /* ---------- mobile: lista vertical por capítulo ---------- */

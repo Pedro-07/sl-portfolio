@@ -35,6 +35,9 @@ export function Work() {
 
           if (desktop) {
             const distance = () => track.scrollWidth - window.innerWidth;
+            const bar = section.querySelector<HTMLElement>(
+              ".work__progress-bar",
+            );
 
             const tween = gsap.to(track, {
               x: () => -distance(),
@@ -46,6 +49,9 @@ export function Work() {
                 anticipatePin: 1,
                 end: () => "+=" + distance(),
                 invalidateOnRefresh: true,
+                onUpdate: (self) => {
+                  if (bar) bar.style.transform = `scaleX(${self.progress})`;
+                },
               },
             });
 
@@ -103,10 +109,16 @@ export function Work() {
       </div>
 
       <div className="work__viewport" data-viewport>
+        <div className="work__progress" aria-hidden="true">
+          <div className="work__progress-bar" />
+        </div>
         <div className="work__track" data-track>
           {chapters.map((chapter, c) => (
             <div style={{ display: "contents" }} key={chapter.title}>
-              <div className="work__chapter">
+              <div
+                className="work__chapter"
+                data-num={String(c + 1).padStart(2, "0")}
+              >
                 <span className="label">
                   {String(c + 1).padStart(2, "0")} /{" "}
                   {String(chapters.length).padStart(2, "0")}

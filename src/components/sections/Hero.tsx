@@ -1,37 +1,63 @@
 import "./Hero.css";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
-import { gsap } from "../../lib/gsap";
+import { gsap, SplitText } from "../../lib/gsap";
 import { Corridor } from "../Corridor";
 import { heroFrames } from "../../data/work";
 
-export function Hero() {
+export function Hero({ play }: { play: boolean }) {
   const scope = useRef<HTMLElement>(null);
 
   useGSAP(
     () => {
+      if (!play) return;
       const mm = gsap.matchMedia();
 
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        const targets = gsap.utils.toArray<HTMLElement>("[data-hero-in]");
-        gsap.set(targets, { opacity: 0, y: 40 });
+        const title = scope.current?.querySelector<HTMLElement>(".hero__title");
+        const rest = gsap.utils.toArray<HTMLElement>(
+          "[data-hero-in]",
+          scope.current,
+        );
 
         // Espera as fontes para a revelação não "pular" na troca de fonte.
         document.fonts.ready.then(() => {
-          gsap.to(targets, {
-            opacity: 1,
-            y: 0,
-            duration: 1.1,
-            ease: "expo.out",
-            stagger: 0.12,
-            delay: 0.15,
-          });
+          if (title) {
+            const split = SplitText.create(title, {
+              type: "lines",
+              mask: "lines",
+            });
+            gsap.fromTo(
+              split.lines,
+              { yPercent: 110 },
+              {
+                yPercent: 0,
+                duration: 1.3,
+                ease: "expo.out",
+                stagger: 0.09,
+                delay: 0.05,
+              },
+            );
+            gsap.set(title, { opacity: 1 });
+          }
+          gsap.fromTo(
+            rest,
+            { opacity: 0, y: 28 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1.1,
+              ease: "expo.out",
+              stagger: 0.1,
+              delay: 0.35,
+            },
+          );
         });
       });
 
       return () => mm.revert();
     },
-    { scope },
+    { scope, dependencies: [play] },
   );
 
   return (
@@ -52,7 +78,7 @@ export function Hero() {
             <span className="label hero__kicker" data-hero-in>
               Estúdio de fotografia
             </span>
-            <h1 className="hero__title" data-hero-in>
+            <h1 className="hero__title">
               SL Prod
               <br />
               Studio
